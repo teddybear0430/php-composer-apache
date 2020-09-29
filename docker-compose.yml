@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  test_web:
+    container_name: test_web
+    build: ./docker_web/
+    volumes:
+        - ./app:/var/www/html
+        - ./docker_web/httpd.conf:/etc/httpd/conf/httpd.conf
+    ports:
+        - 80:80
+    command: sh -c '/usr/sbin/httpd -D FOREGROUND'

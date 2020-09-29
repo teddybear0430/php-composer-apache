@@ -1,0 +1,15 @@
+# htpasswdかhtaccessで終わるファイルへのアクセスを拒否
+<Files ~ "^.(htpasswd|htaccess)$">
+Deny from all
+</Files>
+
+# リダイレクト
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+</IfModule>
+
+# AuthUserFile /var/www/html/.htpasswd
+# AuthGroupFile /dev/null
+# AuthName "Input ID and Password."
+# AuthType Basic
+# require valid-user
